@@ -350,7 +350,7 @@ export default function App() {
 
         <input 
           type="file" 
-          accept="image/*" 
+          accept="image/*,.pdf" 
           className="hidden" 
           id="file-upload"
           aria-label="Upload document or text image"
@@ -370,7 +370,7 @@ export default function App() {
               reader.onload = async (event) => {
                 const base64 = event.target?.result as string;
                 try {
-                  const summary = await processImage('READ_LUME', base64);
+                  const summary = await processImage('READ_LUME', base64, file.type);
                   
                   // Ensure at least 4 seconds of "thinking" time
                   const elapsed = Date.now() - startTime;

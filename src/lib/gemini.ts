@@ -41,7 +41,7 @@ const PROMPTS: Record<LumeModule, string> = {
   READ_LUME: "Act as a cognitive accessibility assistant for people with dyslexia or autism. Summarize this document in exactly one or two very simple, clear sentences. Use plain language, avoid complex words, and focus on the most important message. Do not use any asterisks or special formatting."
 };
 
-export async function processImage(module: LumeModule, base64Image: string) {
+export async function processImage(module: LumeModule, base64Image: string, mimeType: string = "image/jpeg") {
   return withRetry(async () => {
     const model = ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -51,7 +51,7 @@ export async function processImage(module: LumeModule, base64Image: string) {
             { text: PROMPTS[module] },
             {
               inlineData: {
-                mimeType: "image/jpeg",
+                mimeType: mimeType,
                 data: base64Image.split(",")[1] || base64Image,
               },
             },
