@@ -1,0 +1,8 @@
+{
+  "name": "LUME",
+  "description": "An accessibility-first PWA for the visually impaired, providing scene description, food scanning, navigation assistance, and document reading.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
